@@ -4,8 +4,7 @@
 var bitcoinsAmount = 0;
 var exchangeRates = false;
 var targetAmount = document.getElementById("amount");
-//var targetExchange = document.getElementById("exchange");
-/*---- AJAX ----*/
+
 var xmlHttp = new XMLHttpRequest();
 
 xmlHttp.onreadystatechange = function() {
@@ -36,11 +35,11 @@ blockchain.onerror = function(error) {
 blockchain.onopen = function() {
   blockchain.send(JSON.stringify({
     "op": "unconfirmed_sub"
-  })); //	subscribe to uncofirmed activity
+  })); 
   blockchain.send(JSON.stringify({
     "op": "blocks_sub"
-  })); //	subscribe to new blocks
-};
+  })); 
+}
 
 blockchain.onmessage = function(message) {
   var response = JSON.parse(message.data);
